@@ -16,7 +16,11 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	defer file.Close()
+	defer func() {
+		if closeErr := file.Close(); closeErr != nil {
+			fmt.Println("Error closing file:", closeErr)
+		}
+	}()
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {

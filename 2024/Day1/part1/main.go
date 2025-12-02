@@ -11,7 +11,7 @@ func main() {
 	var sum int
 	left, right := utils.ParseInput()
 
-	for i := 0; i < len(left); i++ {
+	for i := range left {
 		sum += int(math.Abs(float64(left[i] - right[i])))
 	}
 	fmt.Println(sum)

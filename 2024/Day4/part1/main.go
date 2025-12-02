@@ -20,8 +20,8 @@ var count = 0
 func main() {
 	grid := utils.ParseInput()
 
-	for row := 0; row < len(grid); row++ {
-		for col := 0; col < len(grid[row]); col++ {
+	for row := range len(grid) {
+		for col := range len(grid[row]) {
 			for _, dir := range directions {
 				rowIndex := dir[0]
 				colIndex := dir[1]

@@ -1,19 +1,27 @@
 package main
 
 import (
-	"github.com/FernandoVideira/AdventOfCode/2025/Day5/part2/utils"
+	"path/filepath"
+
+	"github.com/FernandoVideira/AdventOfCode/2025/common"
+	"github.com/FernandoVideira/AdventOfCode/2025/day1"
 )
 
 func main() {
-	input := utils.ParseInput()
-	dial := utils.Dial{
+	inputPath := filepath.Join("..", "input.txt")
+	lines := common.MustReadLines(inputPath)
+
+	moves := day1.ParseInput(lines)
+	dial := day1.Dial{
 		CurrentPosition: 50,
 	}
+
 	password := 0
-	for move := range input {
-		zero := dial.TurnDial(input[move].Direction, input[move].Steps)
-		password += zero
+
+	for _, move := range moves {
+		newPosition := dial.TurnDialCountZeros(move.Direction, move.Steps)
+		password += newPosition
 	}
 
-	println(password)
+	println("Part 2 - Password is:", password)
 }

@@ -18,7 +18,7 @@ func ParseLine(line string) []int {
 
 func CalculateSlopeSlice(nums []int) []int {
 	var diff []int
-	for i := 0; i < len(nums)-1; i++ {
+	for i := range nums[:len(nums)-1] {
 		diff = append(diff, nums[i+1]-nums[i])
 	}
 	return diff
