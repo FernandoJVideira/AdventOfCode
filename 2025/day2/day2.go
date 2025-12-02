@@ -20,18 +20,6 @@ func ParseInput(lines [][]string) (res [][]int) {
 	return res
 }
 
-func IsIdValidPart1(id int) bool {
-	strId := strconv.Itoa(id)
-	if len(strId)%2 != 0 {
-		return true
-	}
-	mid := len(strId) / 2
-	firstHalf := strId[:mid]
-	secondHalf := strId[mid:]
-
-	return firstHalf != secondHalf
-}
-
 func GenerateInvalidIDSumPart1(start, end, length int) int {
 	if length%2 != 0 {
 		return 0
